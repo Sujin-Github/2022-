@@ -67,4 +67,89 @@ import urllib
 urllib.request.urlretrieve('https://raw.githubusercontent.com/Sujin-Github/Study2022/main/SampleData/2021_%EC%9A%B0%EC%88%98%EB%85%BC%EB%AC%B8_%EC%B4%88%EB%A1%9D.csv', "SampleData.csv")
 #Sampledf=pd.read_csv('SampleData.csv',sep=',',encoding='cp949')
 ```
-#### 
+출력: ('SampleData.csv', <http.client.HTTPMessage at 0x19b2298a040>)
+
+<br>
+
+#### import 및 데이터 확인
+```python
+from hssh.DefClass import *
+
+sampledf=pd.read_csv('SampleData.csv',sep=',',encoding='cp949')
+```
+```python
+sampledf
+```
+출력 (상단 3개만 표시)   
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>과목</th>
+      <th>제목</th>
+      <th>연구자1</th>
+      <th>연구자2</th>
+      <th>초록</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>화학</td>
+      <td>안토시아닌계 색소를 이용한 천연염색에서 염색성과 탄닌의 작용에 대한 탐구</td>
+      <td>1604 이영채</td>
+      <td>1701 유희진</td>
+      <td>합성염료는 인체에 유해한 성분이 다수 포함되어 있으며 염색폐수에 의한 환경오염 문제...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>화학</td>
+      <td>Luminol을 이용한 혈흔탐지법의 화학적 억제 방법 탐구</td>
+      <td>1407 김세윤</td>
+      <td>1417 탁한진</td>
+      <td>본 연구에서는 첫째로 혈액의 공기 중 노출 시간과 혈액과 루미놀 시약 사이 발광 반...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>화학</td>
+      <td>금속증착물에 따른 염료감응 태양전지 셀의</td>
+      <td>1406 공성민</td>
+      <td>1412 신준환</td>
+      <td>본 연구는 화석 연료를 대체할 친환경 발전 공법 중 광감응 염료를 이용한 염료감응형...</td>
+    </tr>
+   </tbody>
+  </table>
+</div>
+
+### Document
+```python
+sampledata=hssh.DefClass.Document(sampledf,'초록')
+```
+```python
+sampledata
+```
+출력   
+<hssh.DefClass.Document at 0x19b46920be0>
+```python
+sampledata.voca_dict
+```
+출력 (일부만 표시)   
+{'연구': 49, '수': 47, '것': 42,'때': 36,'결과': 26, ...
+```python
+sampledata.voca_list
+```
+출력 (일부만 표시)   
+['연구', '수', '것', '때', '결과', ...
+
+```python
+sampledata.idf_dict
+```
+출력 (일부만 표시)   
+    {'연구': 0.0769610411361284,
+     '수': 0.03774032798284711,
+     '것': 0.3513978868378886,
+     '때': 0.30010459245033816,
+     '결과': 0.5232481437645479,
+     '이용': 0.5232481437645479, ...
+     
