@@ -3,6 +3,13 @@
 
 python 패키지 <b>hssh</b>는 pandas의 DataFrame형태로 입력된 문서군에서 키워드를 추출하고 코사인 유사도를 이용해 유사한 문서를 찾을 수 있게 합니다.
 
+## 목차
+* [기능](https://github.com/Sujin-Github/Study2022/blob/main/README.md#%ED%82%A4%EC%9B%8C%EB%93%9C-%EC%B6%94%EC%B6%9C-%EB%B0%8F-%EC%9C%A0%EC%82%AC%EB%8F%84-%EB%B6%84%EC%84%9D%EC%9D%84-%EC%9C%84%ED%95%9C-hssh-%ED%8C%A8%ED%82%A4%EC%A7%80)
+* [설치](https://github.com/Sujin-Github/Study2022/blob/main/README.md#%ED%82%A4%EC%9B%8C%EB%93%9C-%EC%B6%94%EC%B6%9C-%EB%B0%8F-%EC%9C%A0%EC%82%AC%EB%8F%84-%EB%B6%84%EC%84%9D%EC%9D%84-%EC%9C%84%ED%95%9C-hssh-%ED%8C%A8%ED%82%A4%EC%A7%80)
+* [사용 - Document 클래스](https://github.com/Sujin-Github/Study2022/blob/main/README.md#document-%ED%81%B4%EB%9E%98%EC%8A%A4-hsshdefclassdocument)
+* [사용 - Paper 클래스](https://github.com/Sujin-Github/Study2022/blob/main/README.md#paper-%ED%81%B4%EB%9E%98%EC%8A%A4-hsshdefclassdocument)
+* [예시](https://github.com/Sujin-Github/Study2022/blob/main/README.md#%EC%98%88%EC%8B%9C)
+
 ## 기능
 * <b>문서군에서</b>
 	* 빈도수를 기반으로 문서군 단어집 생성
