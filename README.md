@@ -338,7 +338,7 @@ paper1.txt
 
 <br>
 
-### Paper 
+### Paper 함수
 
 ```python
 paper1.keywords_f()
