@@ -76,6 +76,9 @@ urllib.request.urlretrieve('https://raw.githubusercontent.com/Sujin-Github/Study
 ```
 `출력` ('SampleData.csv', <http.client.HTTPMessage at 0x19b2298a040>)
 
+* <i>예시 데이터는 한성과학고등학교 2021학년도 30기(1학년) 우수논문의 제목, 연구자, 초록 등이 포함된 csv 파일로 위 코드를 통해서나 현재 페이지의 [SampleData 폴더](https://github.com/Sujin-Github/Study2022/tree/main/SampleData)에서 다운받을 수 있습니다. 논문 작성자의 허락을 받은 파일로 용도(학습, 테스트) 외 사용을 금합니다.</i>
+
+
 <br>
 
 #### import 및 데이터 확인
