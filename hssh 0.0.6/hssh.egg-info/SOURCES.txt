@@ -1,0 +1,10 @@
+README.md
+setup.py
+hssh/DefClass.py
+hssh/Kmean.py
+hssh/__init__.py
+hssh.egg-info/PKG-INFO
+hssh.egg-info/SOURCES.txt
+hssh.egg-info/dependency_links.txt
+hssh.egg-info/requires.txt
+hssh.egg-info/top_level.txt
