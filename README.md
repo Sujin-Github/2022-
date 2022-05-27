@@ -3,13 +3,6 @@
 
 python 패키지 <b>hssh</b>는 pandas의 DataFrame형태로 입력된 문서군에서 키워드를 추출하고 코사인 유사도를 이용해 유사한 문서를 찾을 수 있게 합니다.
 
-## 목차
-* [기능](https://github.com/Sujin-Github/Study2022/blob/main/README.md#%ED%82%A4%EC%9B%8C%EB%93%9C-%EC%B6%94%EC%B6%9C-%EB%B0%8F-%EC%9C%A0%EC%82%AC%EB%8F%84-%EB%B6%84%EC%84%9D%EC%9D%84-%EC%9C%84%ED%95%9C-hssh-%ED%8C%A8%ED%82%A4%EC%A7%80)
-* [설치](https://github.com/Sujin-Github/Study2022/blob/main/README.md#%ED%82%A4%EC%9B%8C%EB%93%9C-%EC%B6%94%EC%B6%9C-%EB%B0%8F-%EC%9C%A0%EC%82%AC%EB%8F%84-%EB%B6%84%EC%84%9D%EC%9D%84-%EC%9C%84%ED%95%9C-hssh-%ED%8C%A8%ED%82%A4%EC%A7%80)
-* [사용 - Document 클래스](https://github.com/Sujin-Github/Study2022/blob/main/README.md#document-%ED%81%B4%EB%9E%98%EC%8A%A4-hsshdefclassdocument)
-* [사용 - Paper 클래스](https://github.com/Sujin-Github/Study2022/blob/main/README.md#paper-%ED%81%B4%EB%9E%98%EC%8A%A4-hsshdefclassdocument)
-* [예시](https://github.com/Sujin-Github/Study2022/blob/main/README.md#%EC%98%88%EC%8B%9C)
-
 ## 기능
 * <b>문서군에서</b>
 	* 빈도수를 기반으로 문서군 단어집 생성
@@ -28,9 +21,8 @@ pip install hssh
 ```
 / <b>hssh</b>는 numpy, pandas, konlpy 등을 필요로합니다.
 
-## 사용
-### Document 클래스 (hssh.DefClass.Document)
-### Document(dataframe, analysis_by) 
+## DefClass 모듈
+### 클래스 Document(dataframe, analysis_by) 
 
 * `dataframe` : 문서군이 저장된 데이터프레임을 받습니다. header가 있어야합니다.   
 * `analysis_by` : 형태소 분석을 할 열의 칼럼명을 받습니다.   
@@ -41,7 +33,8 @@ pip install hssh
 * `.df` : analysis_by를 칼럼으로 하는 series. 데이터의 양을 줄이기 위해 사용   
 * `.voca_dict` : 문서군에서 등장하는 명사를 { '단어' : '등장 횟수' }의 형태로 횟수가 많은 순부터 내림차순으로 정리한 딕셔너리   
 * `.voca_list` : 문서군에서 등장하는 명사를 등장 횟수가 많은 순부터 내림차순으로 정리한 리스트 (`Document.voca_dict`의 key값)   
-* `.idf_dict` : 단어집의 단어들의 IDF를 { '단어' : 'idf값' }의 형태로 정리한 딕셔너리   
+* `.idf_dict` : 단어집의 단어들의 IDF를 { '단어' : 'idf값' }의 형태로 정리한 딕셔너리
+* `.num` : 문서의 개수   
 
 <br>
 
@@ -50,8 +43,7 @@ pip install hssh
 * `.cos_sim([index_by])` : 코사인 유사도를 이용해 구한 각 문서간 유사도를 데이터프레임으로 정리. dataframe에서 index_by 칼럼을 칼럼/인덱스명으로 지정. 기본 '제목'
 <br><br>
 
-### Paper 클래스 (hssh.DefClass.Document)
-### Paper(content,document)
+### 클래스 Paper(content,document)
 
 * `content`: 분석을 할 내용입니다. 문자열(str)을 받습니다.
 * `document` : 문서가 포함된 Document 클래스를 받습니다.
@@ -62,7 +54,39 @@ pip install hssh
 * `.tftdf` : `document.voca_list` 기준의 TF-IDF 값을 저장한 numpy array로, 단어별 TF와 IDF의 값.
 * `.keywords` : `keywords_f`의 실행값 (하단)
 
-* `.keywords_f([cut])` : TF-IDF 값이 cut 이상인 단어만 내림차순으로 [ ( '단어1' , TF-IDF값1 ) , ... ] 형태로 반환. 실행한 후 .keywords에 저장. cut 기본값 2.
+* `.keywords_f([cut])` : TF-IDF 값이 cut 이상인 단어만 내림차순으로 [ ( '단어1' , TF-IDF값1 ) , ... ] 형태로 반환. 실행한 후 .keywords에 저장. cut 기본값 2.   
+
+<br>
+
+### 함수 notstring(DataFrame, analysis_by)
+
+결측값이나 문자열이 아닌 형태가 들어가있는 데이터 프레임에서 셀을 '0'으로 만들어주는 함수입니다. Document 선언시 형태소 분석에서 오류가 났을때 사용합니다. DataFrame으로 반환합니다.
+
+* `DataFrame.analysis_by` : pandas의 데이터 프레임을 자료형을 받습니다.
+* `anaysis_by` : 형태소 분석을 할 열의 칼럼명을 받습니다.
+
+
+## Kmean 모듈
+K-평균 클러스터링 알고리즘(K-means clustering algorithm)를 이용해 군집화를 하는데 필요한 함수를 포함합니다. Document 클래스를 사용합니다. Kmean 모듈을 임포트하면 DefClass의 클래스들도 함께 임포트합니다.
+
+### 함수 K_mean(Document, K, [title = '제목'])
+
+* `Document` : 분석을 진행할 Document 클래스의 오브젝트를 받습니다.
+* `K` : K-평균 알고리즘의 평균값의 개수, 즉 군집의 개수입니다.
+* `title` : 이름을 나타내는 열의 칼럼명을 받습니다. 기본 값은 '제목'입니다.
+
+* <b>출력</b> : end by [평균을 이동한 횟수] \n SSE: [오차제곱합]
+* <b>반환</b> : ([['자료1','자료2'],[...],...], SSE)
+
+### 함수 elbow(Document, K_start, K_end, [title = '제목'])
+
+* `Document` : 분석을 진행할 Document 클래스의 오브젝트를 받습니다.
+* `K` : K-평균 알고리즘의 평균값의 개수, 즉 군집의 개수입니다.
+* `title` : 이름을 나타내는 열의 칼럼명을 받습니다. 기본 값은 '제목'입니다.
+
+* <b>출력</b> : [SSE1, SSE2, ...]
+
+K_mean을 K값 = K_start부터 K_end까지(포함) 반복해 각각의 SSE 값을 구합니다. 리스트로 묶어 반환합니다. matplotlib 등을 이용해 그래프를 그려 적절한 K값을 선택 할 수 있습니다.
 
 
 ## 예시
