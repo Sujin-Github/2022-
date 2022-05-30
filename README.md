@@ -14,6 +14,8 @@ python 패키지 <b>hssh</b>는 pandas의 DataFrame형태로 입력된 문서군
 * <b>문서에서</b>
 	* 문서군의 단어집을 이용, 단어 빈도 (term frequency, TF) 계산
 	* 키워드 추출
+* <b>군집화 (K-평균 알고리즘)</b>
+	* K개의 군집으로 군집화 및 SSE(오차 제곱 합) 계산
 
 ## 설치
 ```python
